@@ -1,0 +1,21 @@
+Questa cartella presenta un Proxy in PHP per effettuare una sorta di risoluzione DNS casalinga.
+Il Raspberry Pi con un cronjob fa sapere ogni 20 minuti, l'indirizzo IP pubblico al server che hosta il proxy in php e che funge da DNS. Lo script registra l'indirizzo IP di provenienza delle richieste.
+E lo usa per mappare le richieste fatte al proxy in php direttamente all'indirizzo remoto del Raspberry Pi.
+
+I cronjob impostati sul Raspberry Pi sono 2, il primo effettua una chiamata al server remoto (per far sapere il suo IP) ad ogni avvio o reboot del Raspberry Pi.
+Il secondo cronjob effettua una richiesta ad intervalli di 30 minuti.
+
+Tramite il file ip.txt possiamo vedere l'indirizzo IP attuale del raspberry pi e l'ultima data di aggiornamento dell'IP.
+da log_richieste.txt invece la cronologia di tutte le richieste fatte al Raspberry Pi attraverso il proxy PHP, posto in una cartella su un server remoto.
+
+Qui di seguito i cronjob:
+
+@reboot curl http://roccomusolino.com/rpi/update_ip.php
+*/30 * * * * curl http://roccomusolino.com/rpi/update_ip.php
+
+
+Per poter effettuare le richieste, è chiaramente necessario che nel Raspberry Pi giri un server Apache, sulla porta 80. Inoltre è necessario modificare le impostazioni di NAT nel router casalingo per far in modo che le richieste dall'esterno sulla porta 80 vengano mappate all'indirizzo ip locale assegnato al Raspberry Pi connesso.
+E se volete accedere a particolari servizi, che non siano soltanto il web server, ma ad esempio l'ssh su porta 22. E' necessario mappare ogni altra porta che utilizza il servizio corrispondente sul RPi.
+A quel punto basta ottenere l'indirizzo ip dal file ip.txt e fare la connessione dal client ssh usando quell'IP.
+
+Con un servizio di DNS standard si può mappare direttamente tradurre qualsiasi richiesta all'IP dinamico del RPi. Però necessità l'installazione di un client dns sulla board, e non si ha un livello di controllo tale.
