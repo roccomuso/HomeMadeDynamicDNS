@@ -10,11 +10,10 @@ Il secondo cronjob effettua una richiesta ad intervalli di 30 minuti.
 Tramite il file ip.txt possiamo vedere l'indirizzo IP attuale del raspberry pi e l'ultima data di aggiornamento dell'IP.
 da log_richieste.txt invece la cronologia di tutte le richieste fatte al Raspberry Pi attraverso il proxy PHP, posto in una cartella su un server remoto.
 
-Qui di seguito i cronjob:
+Qui di seguito i 2 cronjob:
 
 @reboot curl http://roccomusolino.com/rpi/update_ip.php
 */30 * * * * curl http://roccomusolino.com/rpi/update_ip.php
-
 
 Per poter effettuare le richieste, è chiaramente necessario che nel Raspberry Pi giri un server Apache, sulla porta 80. Inoltre è necessario modificare le impostazioni di NAT nel router casalingo per far in modo che le richieste dall'esterno sulla porta 80 vengano mappate all'indirizzo ip locale assegnato al Raspberry Pi connesso.
 E se volete accedere a particolari servizi, che non siano soltanto il web server, ma ad esempio l'ssh su porta 22. E' necessario mappare ogni altra porta che utilizza il servizio corrispondente sul RPi.
