@@ -8,7 +8,7 @@ I cronjob impostati sul Raspberry Pi sono 2, il primo effettua una chiamata al s
 Il secondo cronjob effettua una richiesta ad intervalli di 30 minuti.
 
 Tramite il file ip.txt possiamo vedere l'indirizzo IP attuale del raspberry pi e l'ultima data di aggiornamento dell'IP.
-da log_richieste.txt invece la cronologia di tutte le richieste fatte al Raspberry Pi attraverso il proxy PHP, posto in una cartella su un server remoto.
+da log_richieste.txt invece la cronologia di tutte le richieste fatte al Raspberry Pi attraverso il proxy PHP, posto in una cartella sul server remoto.
 
 Qui di seguito i 2 cronjob:
 
