@@ -1,3 +1,5 @@
+ITALIAN:
+
 Questa cartella presenta un Proxy in PHP per effettuare una sorta di risoluzione DNS casalinga.
 Il Raspberry Pi con un cronjob fa sapere ogni 20 minuti, l'indirizzo IP pubblico al server che hosta il proxy in php e che funge da DNS. Lo script registra l'indirizzo IP di provenienza delle richieste.
 E lo usa per mappare le richieste fatte al proxy in php direttamente all'indirizzo remoto del Raspberry Pi.
